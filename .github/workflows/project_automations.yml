@@ -23,7 +23,7 @@ jobs:
         uses: leonsteinhaeuser/project-beta-automations@v2.0.1
         with:
           gh_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          user: leonsteinhaeuser
+          user: wlexiiii
           project_id: 4
           resource_node_id: ${{ github.event.issue.node_id }}
           status_value: "Todo"
