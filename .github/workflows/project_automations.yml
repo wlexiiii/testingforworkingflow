@@ -1,0 +1,29 @@
+name: Project automations
+
+on:
+  issues:
+    types:
+      - opened
+  pull_request:
+    types:
+      - opened
+env:
+  todo: Todo
+  gh_project_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+  user: wlexiiii
+  project_id: 4
+
+jobs:
+  issue_opened:
+    name: issue_opened
+    runs-on: ubuntu-latest
+    if: github.event_name == 'issues' && github.event.action == 'opened'
+    steps:
+      - name: 'Move issue to Todo'
+        uses: leonsteinhaeuser/project-beta-automations@v2.0.1
+        with:
+          gh_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          user: leonsteinhaeuser
+          project_id: 4
+          resource_node_id: ${{ github.event.issue.node_id }}
+          status_value: "Todo"
